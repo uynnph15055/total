@@ -4,17 +4,20 @@ include './../../Config/Connect.php';
 include './../../helper/dd.php';
 include './../../helper/baseAdmin.php';
 include './../../models/category.php';
+include './../../models/prototie.php';
 include './layouts/header.php';
 
 if(isset($_GET['url'])){
     $url = $_GET['url'];
     switch ($url) {
-        case 'san-pham':
-            include './product/add.php';
+        case 'thuoc-tinh':
+            $proto = getAllPrototie();
+            $parent =  getParentPrototie();
+            include './prototie/index.php';
             break;
+
         case 'danh-muc':
             $cate = getAllCategory();
-             
             include './category/index.php';
             break;
         case 'them-danh-muc':
@@ -31,13 +34,13 @@ if(isset($_GET['url'])){
                     try {
                         insertCate( $_POST);
                         header("location:".BASE_ADMIN."danh-muc");
-              
                     } catch (\Throwable $th) {
                         //throw $th;
                     }
                 }
             }
             break;
+
         case 'xoa-danh-muc':
             if(isset($_GET['id'])){
                 deleteCate($_GET['id']);        
