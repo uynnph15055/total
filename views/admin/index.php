@@ -16,6 +16,7 @@ if(isset($_GET['url'])){
             include './prototie/index.php';
             break;
         case 'luu-thuoc-tinh':
+            echo 1;
             if(isset($_POST)){
                 try {
                     if($_POST["tt_type"] == 0){
