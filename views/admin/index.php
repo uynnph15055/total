@@ -15,6 +15,21 @@ if(isset($_GET['url'])){
             $parent =  getParentPrototie();
             include './prototie/index.php';
             break;
+        case 'luu-thuoc-tinh':
+            if(isset($_POST)){
+                try {
+                    if($_POST["tt_type"] == 0){
+                        $_POST['tt_code'] = NULL;
+                    }
+                    insertPropertie($_POST);
+                    header('Location: ' . $_SERVER['HTTP_REFERER']);
+                } catch (\Throwable $th) {
+                    dd('Lỗi ko thêm được !!!');
+                }
+             
+            }
+            include './prototie/index.php';
+            break;
 
         case 'danh-muc':
             $cate = getAllCategory();
@@ -57,7 +72,7 @@ if(isset($_GET['url'])){
             break;
     }
 }else{
-    include './home.php';
+    include './main.php';
 }
 
 

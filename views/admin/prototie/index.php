@@ -3,7 +3,7 @@
 </div>
 <div class="row">
     <div class="col-3">
-        <form action="">
+        <form action="?url=luu-thuoc-tinh" method="POST">
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Tên</label>
                 <input type="text" class="form-control" name="tt_name" placeholder="Thêm tên"
@@ -28,7 +28,7 @@
           
             <div id="select-color" class="mb-3 ">
                 <label for="exampleInputEmail1" class="form-label d-block">Chọn màu</label>
-                <input type="color"  name="tt_color"
+                <input type="color"  name="tt_code"
                     aria-describedby="emailHelp">
             </div>
             <button class="btn btn-success">Thêm thuộc tính</button>
@@ -57,10 +57,8 @@
                     <td>
                     <?php  if( $item["tt_type"] == 0) { 
                         echo   $item["tt_name"] ?>
-                        
                       <?php  }else{?> 
-                           
-                           <div class="rounded-circle"  style="width:30px;height:30px;background-color: <?= '#' .$item["tt_code"]?>"></div>
+                           <div class="rounded-circle"  style="width:30px;height:30px;background-color: <?= $item["tt_code"]?>"></div>
                       <?php  }?>   
                     </td>
                     <td><a href="" class="btn btn-warning">Sửa</a></td>

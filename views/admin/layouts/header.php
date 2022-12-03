@@ -34,9 +34,9 @@
         <div class="row">
             <div class="col-2 nav-admin">
                 <div class="d-flex flex-column bd-highlight mb-3">
-                    <a href="" class="p-2 bd-highlight">Quản lý sản phẩm</a>
-                    <a href="" class="p-2 bd-highlight">Quản lý danh mục</a>
-                    <a href="" class="p-2 bd-highlight">Quản lý biến thể</a>
+                    <a href="?url=san-pham" class="p-2 bd-highlight">Quản lý sản phẩm</a>
+                    <a href="?url=danh-muc" class="p-2 bd-highlight">Quản lý danh mục</a>
+                    <a href="?url=thuoc-tinh" class="p-2 bd-highlight">Quản lý biến thể</a>
                 </div>
             </div>
             <div class="col-10 p-4">
