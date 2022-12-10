@@ -20,9 +20,9 @@
          foreach($cate as $item): ?>
         <tr>
             <td><?=$index++?></td>
-            <td><img width="70px" src="./../../upload/<?=$item["dm_image"]?>" alt=""></td>
+            <td><img width="70px" src="<?=$item["dm_image"]?>" alt=""></td>
             <td><?=$item["dm_name"]?></td>
-            <td><a href="" class="btn btn-warning">Sửa</a></td>
+            <td><a href="?url=sua-danh-muc&id=<?=$item["dm_id"]?>" class="btn btn-warning">Sửa</a></td>
             <td><a href="?url=xoa-danh-muc&id=<?=$item["dm_id"]?>"  onClick="return confirm('Bạn có muốn xóa ?')" class="btn btn-danger">Xóa</a></td>
             <td></td>
         </tr>
