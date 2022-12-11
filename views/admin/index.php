@@ -27,9 +27,29 @@ if (isset($_GET['url'])) {
                     dd('Lỗi ko thêm được !!!');
                 }
             }
-            include './prototie/index.php';
             break;
-
+        case 'sua-thuoc-tinh':
+            $proto = getOnePrototie($_GET['id']);
+            $nameChoseParent = getOnePrototie($proto['tt_parent_id'] != 0 ? $proto['tt_parent_id'] : $proto['tt_id']);
+            $parent =  getParentPrototie();
+            include './prototie/update.php';
+            break;
+        case 'luu-sua-thuoc-tinh':
+            if ($_POST) {
+                if ($_POST["tt_type"] == 0) {
+                    $_POST['tt_code'] = NULL;
+                }
+                updatePropertie($_POST);
+                header('Location: ?url=thuoc-tinh');
+            }
+            break;
+        case 'xoa-thuoc-tinh';
+            if (isset($_GET['id'])) {
+                deletePropertie($_GET['id']);
+                header('Location: ' . $_SERVER['HTTP_REFERER']);
+            }
+            break;
+            break;
         case 'danh-muc':
             $cate = getAllCategory();
             include './category/index.php';
@@ -82,7 +102,6 @@ if (isset($_GET['url'])) {
                 deleteCate($_GET['id']);
                 header('Location: ' . $_SERVER['HTTP_REFERER']);
             }
-            include './category/add.php';
             break;
         case 'lien-he':
             include './contact.php';
