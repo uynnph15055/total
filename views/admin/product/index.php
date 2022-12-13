@@ -4,24 +4,23 @@
         <a href="" class="btn btn-success">Thêm danh mục</a>
     </div>
 </div>
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">STT</th>
-            <th scope="col">Ảnh</th>
-            <th scope="col">Tên</th>
-            <th>Sửa</th>
-            <th>Xóa</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>1</td>
-            <td><img width="70px" src="" alt=""></td>
-            <td>Quần</td>
-            <td><a href="" class="btn btn-warning">Sửa</a></td>
-            <td><a href="" class="btn btn-danger">Xóa</a></td>
-            <td></td>
-        </tr>
-    </tbody>
-</table>
+<div class="">
+    <table border="1">
+        <thead>
+            <style>
+                th{
+                border: 1px  solid #000;    
+                }
+            </style>
+            <?php foreach($proto as $item): ?>
+            <th>
+                <a href="?url=chi-tiet-san-pham&id=<?=$item['id']?>">
+                <img width="100px" src="./../../upload/<?= $item['sp_image']?>" alt="">
+                <h2><?= $item['sp_name']?></h2>
+                <p><?= $item['sp_intro']?></p>
+                </a>
+            </th>
+            <?php endforeach ?>
+        </thead>
+    </table>
+</div>

@@ -20,6 +20,17 @@ function getParentPrototie(){
     return $result;
 }
 
+// Get parent propertie
+function getPrototieDontParent(){
+    $conn = connect();
+    $stmt = $conn->prepare("SELECT *  FROM propertie WHERE tt_parent_id != 0");
+    $stmt->execute();
+    $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    $result = $stmt->fetchAll();
+    return $result;
+}
+
+
 
 // Insert
 function insertPropertie($data){

@@ -5,11 +5,40 @@ include './../../helper/dd.php';
 include './../../helper/baseAdmin.php';
 include './../../models/category.php';
 include './../../models/prototie.php';
+include './../../models/product.php';
 include './layouts/header.php';
 
 if(isset($_GET['url'])){
     $url = $_GET['url'];
     switch ($url) {
+        case 'them-san-pham':
+            $proto =  getPrototieDontParent();
+            $cate = getAllCategory();
+            include './product/add.php';
+            break;
+
+        case 'chi-tiet-san-pham':
+            $proto =  getProductDetail($_GET['id'])[0];
+            include './product/detail.php';
+            break;
+        
+       case 'san-pham':
+            $proto =  getProductAll();
+            include './product/index.php';
+            break;
+
+        case 'luu-them-san-pham':
+            if($_FILES["sp_image"]){
+                $file = $_FILES["sp_image"];
+                $fileName = $file["name"];
+                move_uploaded_file($file["tmp_name"] , './../../upload/' . $fileName);
+                $_POST['sp_image'] = $fileName;
+                insertProduct($_POST);
+                dd('success');
+            }
+          
+            break;
+
         case 'thuoc-tinh':
             $proto = getAllPrototie();
             $parent =  getParentPrototie();
