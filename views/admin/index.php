@@ -23,7 +23,7 @@ if(isset($_GET['url'])){
             break;
         
        case 'san-pham':
-            $proto =  getProductAll();
+            $proto =  getProductList();
             include './product/index.php';
             break;
 
@@ -95,6 +95,8 @@ if(isset($_GET['url'])){
         case 'lien-he':
             include './contact.php';
             break;
+        
+      
 
         default:
             # code...

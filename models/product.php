@@ -8,6 +8,13 @@ function insertProduct($data){
 
 }
 
+function updateStatusProduct($id , $value){
+    $conn = connect();
+    $stmt = $conn->prepare("UPDATE `products`  SET `status` = $value WHERE `id` = $id");
+    $stmt->execute();
+
+}
+
 
 // Gọi tất cả sản phẩm ra ngoài
 function getProductAll(){
@@ -23,6 +30,17 @@ function getProductAll(){
 function getProductDetail($id){
     $conn = connect();
     $stmt = $conn->prepare("SELECT *  FROM products WHERE id = $id");
+    $stmt->execute();
+    $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    $result = $stmt->fetchAll();
+    return $result;
+}
+
+
+// Gọi tất cả sản phẩm ra ngoài
+function getProductList(){
+    $conn = connect();
+    $stmt = $conn->prepare("SELECT *  FROM products INNER JOIN category ON products.cate_id = category.dm_id INNER JOIN propertie ON products.proper_id = propertie.tt_id");
     $stmt->execute();
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
     $result = $stmt->fetchAll();
