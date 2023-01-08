@@ -11,9 +11,9 @@
 }
 
 // Get parent propertie
-function getParentPrototie(){
+function getParentPrototie($parent_id = 0){
     $conn = connect();
-    $stmt = $conn->prepare("SELECT *  FROM propertie WHERE tt_parent_id=0");
+    $stmt = $conn->prepare("SELECT *  FROM propertie WHERE tt_parent_id=$parent_id");
     $stmt->execute();
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
     $result = $stmt->fetchAll();
