@@ -24,11 +24,10 @@ if(isset($_GET['url'])){
             break;
         case 'lien-he':
             include './contact.php';
-            break;
+         break;
          case 'chi-tiet-san-pham':
             if(isset($_GET['id'])){
                 $comment = getComment($_GET['id']);
-                dd($comment);
                 $rowPro = getProductDetail($_GET['id'])[0];
                 $product = getProductWhereCateRemoveIt($rowPro['cate_id'], $_GET['id']);
                 updateViewProduct($_GET['id'] ,  $rowPro['number_view'] + 1);
@@ -38,7 +37,40 @@ if(isset($_GET['url'])){
 
         case 'them-gio-hang':
             if(isset($_POST)){
-                dd($_POST);
+                $productId = $_POST["sp_id"];
+                $rowProduct = getProductDetail($productId)[0];
+                if(isset($_SESSION["cart"])){
+                    $cart = $_SESSION["cart"];
+                    if(array_key_exists($productId , $cart)){
+                        $cart[$productId] = [
+                            'id' => $productId,
+                             'name' => $rowProduct["sp_name"],
+                             'image' => $rowProduct["sp_image"],
+                             'quantity' => $_POST["quantity"] + $cart[$productId]['quantity'],
+                             'price' => $rowProduct["sp_sale"],
+                        ];
+                    }else{
+                        $cart[$productId] = [
+                            'id' => $productId,
+                             'name' => $rowProduct["sp_name"],
+                             'image' => $rowProduct["sp_image"],
+                             'quantity' => $_POST["quantity"],
+                             'price' => $rowProduct["sp_sale"],
+                        ];
+                    }
+                }else{
+                    $cart[$productId] = [
+                        'id' => $productId,
+                         'name' => $rowProduct["sp_name"],
+                         'image' => $rowProduct["sp_image"],
+                         'quantity' => $_POST["quantity"],
+                         'price' => $rowProduct["sp_sale"],
+                    ];
+                }
+
+                $_SESSION["cart"] = $cart;
+                dd($_SESSION["cart"]);
+
             }
             break;
 

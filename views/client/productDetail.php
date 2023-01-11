@@ -8,12 +8,22 @@
             <input type="text" name="sp_id" hidden value="<?=$rowPro['id']?>">
             <h2 class="text-primary"><?=number_format($rowPro['sp_sale'] ,0 , '.' , '.' )?>đ</h2>
             <p class="text-danger text-decoration-line-through"><?=number_format($rowPro['sp_price'] , 0  , '.' , '.')?>đ</p>
+            <style>
+                .size-valiable.active{
+                    background-color: #000;
+                    color: white;
+                }
+
+                .size-valiable{
+                    cursor: pointer;
+                }
+            </style>
             <h3>Size :</h3>
-                <label class="border p-2" for="sizeS">Size S</label>
-                <input type="radio" value="S" name="size" hidden id="sizeS" >
-                <label class="border p-2" for="sizeM">Size M</label>
+                <label onClick="activeSize('size1')" id="size1" class="border size-valiable  p-2" for="sizeS">Size S</label>
+                <input type="radio"  value="S" name="size" hidden id="sizeS" >
+                <label onClick="activeSize('size2')" id="size2"  class="border size-valiable p-2" for="sizeM">Size M</label>
                 <input type="radio"  value="M"  hidden  name="size" id="sizeM" >
-                <label class="border p-2" for="sizeXL">sizeXL</label>
+                <label onClick="activeSize('size3')" id="size3" class="border size-valiable p-2" for="sizeXL">SizeXL</label>
                 <input type="radio" hidden value="XL"  name="size" id="sizeXL" >
             <h3>Số lượng :</h3>
             <input type="number" name="quantity">
@@ -56,3 +66,4 @@
           </div>
         </div>
 </div>
+
